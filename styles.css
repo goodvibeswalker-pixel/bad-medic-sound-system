@@ -500,7 +500,7 @@ button { color: inherit; font: inherit; }
 .site-footer > a { justify-self: start; }
 .site-footer img { width: 132px; height: 56px; object-fit: contain; object-position: left; }
 .site-footer p { margin: 0; }
-.site-footer p:nth-child(2) { display: flex; justify-content: center; gap: 11px; }
+.site-footer p:nth-child(2) { display: flex; justify-content: center; gap: 11px; flex-wrap: wrap; text-align: center; }
 .site-footer p:nth-child(2) a { color: #8d826f; }
 .site-footer p:nth-child(2) a:hover { color: var(--gold-light); }
 .site-footer p:last-child { justify-self: end; }
