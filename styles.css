@@ -446,6 +446,10 @@ button { color: inherit; font: inherit; }
 .catalog-copy h3 { margin: 18px 0; font-family: var(--serif); font-size: clamp(38px,5vw,72px); font-weight: 400; line-height: .95; letter-spacing: -.05em; }
 .catalog-copy p { color: rgba(241,234,220,.72); }
 .catalog-copy strong { margin-top: 30px; color: var(--gold-light); font-size: 12px; letter-spacing: .18em; }
+.product-price { margin-top: 24px; padding: 18px 0; display: flex; align-items: baseline; gap: 14px; border-block: 1px solid var(--line); }
+.product-price span { color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: .18em; }
+.product-price strong { margin: 0; color: var(--gold-light); font-family: var(--serif); font-size: clamp(32px,4vw,54px); line-height: 1; letter-spacing: -.04em; }
+.product-price small { color: var(--muted); font-size: 10px; letter-spacing: .08em; }
 .order-form { margin-top: 32px; }
 .order-form fieldset { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0; padding: 0; border: 0; }
 .order-form legend { grid-column: 1 / -1; margin-bottom: 12px; color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: .18em; }
@@ -580,6 +584,7 @@ button { color: inherit; font: inherit; }
   .anthem-mute { grid-column: 2; justify-self: end; margin-top: -12px; }
   .anthem-copy { padding: 26px; }
   .catalog-image { min-height: 360px; }
+  .product-price { display: grid; gap: 6px; }
   .order-form fieldset { grid-template-columns: repeat(2, 1fr); }
   .order-actions { grid-template-columns: 1fr; }
   .event-spec div { grid-template-columns: 1fr; gap: 4px; }

@@ -98,6 +98,11 @@ const teeQtyInputs = document.querySelectorAll('.tee-qty');
 const teeOrderSummary = document.getElementById('tee-order-summary');
 const copyOrderButton = document.getElementById('copy-order');
 const teeOrderLink = document.getElementById('tee-order-link');
+const teeUnitPrice = 4000;
+
+function formatYen(amount) {
+  return `¥${amount.toLocaleString('ja-JP')}`;
+}
 
 function getTeeOrderText() {
   const selected = Array.from(teeQtyInputs)
@@ -108,7 +113,8 @@ function getTeeOrderText() {
 
   const lines = selected.map((item) => `${item.size}: ${item.quantity}枚`);
   const total = selected.reduce((sum, item) => sum + item.quantity, 0);
-  return `BAD MEDIC LOGO TEE 注文希望\n${lines.join('\n')}\n合計: ${total}枚`;
+  const subtotal = total * teeUnitPrice;
+  return `BAD MEDIC LOGO TEE 注文希望\n${lines.join('\n')}\n合計枚数: ${total}枚\n商品合計: ${formatYen(subtotal)}\n送料: 別途`;
 }
 
 function updateTeeOrder() {
