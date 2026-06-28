@@ -92,3 +92,64 @@ if (anthemAudio && anthemToggle && anthemProgress) {
     anthemMute.setAttribute('aria-label', anthemAudio.muted ? 'ミュートを解除' : '音声をミュート');
   });
 }
+
+const teeOrderForm = document.getElementById('tee-order-form');
+const teeQtyInputs = document.querySelectorAll('.tee-qty');
+const teeOrderSummary = document.getElementById('tee-order-summary');
+const copyOrderButton = document.getElementById('copy-order');
+const teeOrderLink = document.getElementById('tee-order-link');
+
+function getTeeOrderText() {
+  const selected = Array.from(teeQtyInputs)
+    .map((input) => ({ size: input.name, quantity: Math.max(0, Number(input.value) || 0) }))
+    .filter((item) => item.quantity > 0);
+
+  if (!selected.length) return '';
+
+  const lines = selected.map((item) => `${item.size}: ${item.quantity}枚`);
+  const total = selected.reduce((sum, item) => sum + item.quantity, 0);
+  return `BAD MEDIC LOGO TEE 注文希望\n${lines.join('\n')}\n合計: ${total}枚`;
+}
+
+function updateTeeOrder() {
+  const orderText = getTeeOrderText();
+  if (!teeOrderSummary || !teeOrderLink) return;
+
+  teeOrderSummary.textContent = orderText || 'サイズと枚数を選択してください。';
+  teeOrderLink.classList.toggle('is-disabled', !orderText);
+  teeOrderLink.setAttribute('aria-disabled', String(!orderText));
+}
+
+if (teeOrderForm && teeQtyInputs.length) {
+  teeQtyInputs.forEach((input) => {
+    input.addEventListener('input', () => {
+      const value = Math.max(0, Math.min(20, Number(input.value) || 0));
+      input.value = String(value);
+      updateTeeOrder();
+    });
+  });
+
+  copyOrderButton?.addEventListener('click', async () => {
+    const orderText = getTeeOrderText();
+    if (!orderText) {
+      teeOrderSummary.textContent = '先にサイズと枚数を選択してください。';
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(orderText);
+      teeOrderSummary.textContent = `${orderText}\n\nコピーしました。Instagram DMに貼り付けて送信してください。`;
+    } catch {
+      teeOrderSummary.textContent = `${orderText}\n\nこの内容をコピーしてInstagram DMへ送信してください。`;
+    }
+  });
+
+  teeOrderLink?.addEventListener('click', (event) => {
+    if (!getTeeOrderText()) {
+      event.preventDefault();
+      teeOrderSummary.textContent = '先にサイズと枚数を選択してください。';
+    }
+  });
+
+  updateTeeOrder();
+}

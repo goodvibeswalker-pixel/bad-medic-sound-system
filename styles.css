@@ -446,6 +446,19 @@ button { color: inherit; font: inherit; }
 .catalog-copy h3 { margin: 18px 0; font-family: var(--serif); font-size: clamp(38px,5vw,72px); font-weight: 400; line-height: .95; letter-spacing: -.05em; }
 .catalog-copy p { color: rgba(241,234,220,.72); }
 .catalog-copy strong { margin-top: 30px; color: var(--gold-light); font-size: 12px; letter-spacing: .18em; }
+.order-form { margin-top: 32px; }
+.order-form fieldset { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0; padding: 0; border: 0; }
+.order-form legend { grid-column: 1 / -1; margin-bottom: 12px; color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: .18em; }
+.order-form label { display: grid; gap: 8px; padding: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.025); }
+.order-form label span { color: var(--gold-light); font-family: var(--serif); font-size: 26px; line-height: 1; }
+.order-form input { width: 100%; min-height: 44px; border: 1px solid rgba(199,163,91,.32); border-radius: 0; background: #070706; color: var(--paper); font-size: 18px; text-align: center; }
+.order-form input:focus { outline: 2px solid rgba(240,207,131,.45); outline-offset: 2px; }
+.order-summary { margin-top: 18px; padding: 18px; border: 1px solid rgba(199,163,91,.28); background: rgba(199,163,91,.055); }
+.order-summary small { color: var(--gold); font-size: 9px; font-weight: 800; letter-spacing: .18em; }
+.order-summary p { margin: 8px 0 0; color: var(--paper); font-size: 13px; white-space: pre-line; }
+.order-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.order-actions .button { width: 100%; padding-inline: 14px; text-align: center; cursor: pointer; }
+.order-actions .is-disabled { opacity: .48; cursor: not-allowed; }
 
 .light {
   background: var(--paper);
@@ -567,6 +580,8 @@ button { color: inherit; font: inherit; }
   .anthem-mute { grid-column: 2; justify-self: end; margin-top: -12px; }
   .anthem-copy { padding: 26px; }
   .catalog-image { min-height: 360px; }
+  .order-form fieldset { grid-template-columns: repeat(2, 1fr); }
+  .order-actions { grid-template-columns: 1fr; }
   .event-spec div { grid-template-columns: 1fr; gap: 4px; }
   .contact h2 { font-size: clamp(48px, 15vw, 78px); }
   .social-link { gap: 12px; }

@@ -200,8 +200,24 @@
           <div class="catalog-copy">
             <small>BLACK / GOLD</small>
             <h3>BAD MEDIC LOGO TEE</h3>
-            <p>BAD MEDICのロゴを大きく配置したブラックボディのTシャツ。販売開始・新作情報はInstagramでお知らせします。</p>
-            <strong>COMING SOON</strong>
+            <p>BAD MEDICのロゴを大きく配置したブラックボディのTシャツ。サイズと枚数を選んで、Instagram DMから購入連絡できます。</p>
+            <form class="order-form" id="tee-order-form">
+              <fieldset>
+                <legend>SIZE / QUANTITY</legend>
+                <label><span>S</span><input class="tee-qty" type="number" name="S" min="0" max="20" value="0" inputmode="numeric" /></label>
+                <label><span>M</span><input class="tee-qty" type="number" name="M" min="0" max="20" value="0" inputmode="numeric" /></label>
+                <label><span>L</span><input class="tee-qty" type="number" name="L" min="0" max="20" value="0" inputmode="numeric" /></label>
+                <label><span>XL</span><input class="tee-qty" type="number" name="XL" min="0" max="20" value="0" inputmode="numeric" /></label>
+              </fieldset>
+              <div class="order-summary" aria-live="polite">
+                <small>ORDER SUMMARY</small>
+                <p id="tee-order-summary">サイズと枚数を選択してください。</p>
+              </div>
+              <div class="order-actions">
+                <button class="button button-primary" type="button" id="copy-order">注文内容をコピー</button>
+                <a class="button button-ghost" id="tee-order-link" href="https://www.instagram.com/kazuyachinen_goodvibeswalker/" target="_blank" rel="noopener noreferrer">Instagram DMで購入する ↗</a>
+              </div>
+            </form>
           </div>
         </article>
       </section>
