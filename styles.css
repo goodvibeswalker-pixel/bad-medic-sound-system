@@ -523,15 +523,6 @@ button { color: inherit; font: inherit; }
   gap: 8px;
   margin: 28px 0 34px;
 }
-.region-tags span {
-  padding: 8px 12px;
-  border: 1px solid rgba(17,16,13,.18);
-  background: #f8f2e5;
-  color: #433d34;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .08em;
-}
 .event-actions {
   display: flex;
   flex-wrap: wrap;
@@ -548,6 +539,27 @@ button { color: inherit; font: inherit; }
 .event-list {
   display: grid;
   gap: 14px;
+}
+.region-filter {
+  appearance: none;
+  border: 1px solid rgba(17,16,13,.16);
+  border-radius: 999px;
+  background: transparent;
+  color: #11100d;
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  padding: 10px 14px;
+  transition: background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
+}
+.region-filter:hover,
+.region-filter.is-active {
+  background: #11100d;
+  border-color: #11100d;
+  color: var(--paper);
+  transform: translateY(-1px);
 }
 .event-card {
   padding: clamp(26px, 4vw, 44px);
