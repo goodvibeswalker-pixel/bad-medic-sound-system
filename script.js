@@ -38,6 +38,24 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 document.getElementById('year').textContent = new Date().getFullYear();
 
+const datedEventCards = document.querySelectorAll('.event-card[data-event-date]');
+const eventEmpty = document.querySelector('.event-empty');
+
+if (datedEventCards.length) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  let visibleEventCount = 0;
+  datedEventCards.forEach((card) => {
+    const eventDate = new Date(`${card.dataset.eventDate}T00:00:00`);
+    const isPast = Number.isFinite(eventDate.getTime()) && eventDate < today;
+    card.hidden = isPast;
+    if (!isPast) visibleEventCount += 1;
+  });
+
+  if (eventEmpty) eventEmpty.hidden = visibleEventCount > 0;
+}
+
 const anthemAudio = document.getElementById('anthem-audio');
 const anthemToggle = document.querySelector('.anthem-toggle');
 const anthemProgress = document.getElementById('anthem-progress');
