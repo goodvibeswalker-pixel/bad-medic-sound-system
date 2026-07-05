@@ -77,6 +77,75 @@ regionButtons.forEach((button) => {
   });
 });
 
+const eventRequestForm = document.getElementById('event-request-form');
+const eventRequestNote = document.getElementById('event-request-note');
+const eventDmLink = document.getElementById('event-dm-link');
+const eventMailAddress = 'goodvibeswaalker@gmail.com';
+
+function getFormValue(formData, key) {
+  return String(formData.get(key) || '').trim();
+}
+
+function buildEventRequestMessage() {
+  if (!eventRequestForm) return { subject: '', body: '' };
+  const formData = new FormData(eventRequestForm);
+  const eventName = getFormValue(formData, 'eventName');
+  const eventDate = getFormValue(formData, 'eventDate');
+  const eventRegion = getFormValue(formData, 'eventRegion');
+  const eventArea = getFormValue(formData, 'eventArea');
+  const eventVenue = getFormValue(formData, 'eventVenue');
+  const eventTime = getFormValue(formData, 'eventTime');
+  const eventLineup = getFormValue(formData, 'eventLineup');
+  const eventTicket = getFormValue(formData, 'eventTicket');
+  const eventContact = getFormValue(formData, 'eventContact');
+  const eventDetails = getFormValue(formData, 'eventDetails');
+
+  const subject = `イベント掲載依頼：${eventName || '名称未入力'}`;
+  const body = [
+    'BAD MEDIC SOUND SYSTEM イベント掲載依頼',
+    '',
+    `イベント名：${eventName}`,
+    `開催日：${eventDate}`,
+    `地域：${eventRegion}`,
+    `都道府県・市区町村：${eventArea}`,
+    `会場名：${eventVenue}`,
+    `開催時間：${eventTime}`,
+    `出演者・サウンド：`,
+    eventLineup,
+    '',
+    `料金・チケット：${eventTicket}`,
+    `問い合わせ先 / SNS：${eventContact}`,
+    '',
+    '詳細・メッセージ：',
+    eventDetails,
+    '',
+    '※フライヤー画像がある場合は、このメールに添付してください。',
+    '※掲載対象は本日以降に開催されるイベントのみです。'
+  ].join('\n');
+
+  return { subject, body };
+}
+
+eventRequestForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const { subject, body } = buildEventRequestMessage();
+  const mailto = `mailto:${eventMailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
+  if (eventRequestNote) eventRequestNote.textContent = 'メール作成画面を開きました。フライヤーがある場合は添付して送信してください。';
+});
+
+eventDmLink?.addEventListener('click', async () => {
+  const { body } = buildEventRequestMessage();
+  if (!body.trim()) return;
+
+  try {
+    await navigator.clipboard.writeText(body);
+    if (eventRequestNote) eventRequestNote.textContent = '入力内容をコピーしました。Instagram DMに貼り付けて送信してください。';
+  } catch {
+    if (eventRequestNote) eventRequestNote.textContent = 'Instagram DMを開きます。入力内容をコピーしてDMに貼り付けてください。';
+  }
+});
+
 const anthemAudio = document.getElementById('anthem-audio');
 const anthemToggle = document.querySelector('.anthem-toggle');
 const anthemProgress = document.getElementById('anthem-progress');
