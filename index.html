@@ -253,8 +253,8 @@
               <button type="button" class="region-filter" data-region="okinawa">沖縄</button>
             </div>
             <div class="event-actions">
-              <a class="button button-dark" href="https://www.instagram.com/kazuyachinen_goodvibeswalker/" target="_blank" rel="noopener noreferrer">
-                イベント掲載を依頼する ↗
+              <a class="button button-dark" href="#event-request">
+                イベント掲載を依頼する ↓
               </a>
             </div>
           </div>
@@ -361,6 +361,75 @@
             </article>
             <p class="event-empty" hidden>この地域の掲載中イベントはまだありません。掲載依頼はInstagram DMよりお送りください。</p>
           </div>
+        </div>
+        <div class="event-request reveal" id="event-request">
+          <div class="event-request-copy">
+            <p class="eyebrow">EVENT POST REQUEST</p>
+            <h3>イベント掲載依頼</h3>
+            <p>
+              全国のレゲエイベント情報を募集しています。必要事項を入力すると、メール本文を自動作成できます。フライヤー画像がある場合は、メールまたはInstagram DMで添付してください。
+            </p>
+          </div>
+          <form class="event-request-form" id="event-request-form">
+            <label>
+              <span>イベント名</span>
+              <input name="eventName" type="text" placeholder="例：IRIE JAM SESSION vol.8" required />
+            </label>
+            <label>
+              <span>開催日</span>
+              <input name="eventDate" type="date" required />
+            </label>
+            <label>
+              <span>地域</span>
+              <select name="eventRegion" required>
+                <option value="">地域を選択</option>
+                <option>北海道</option>
+                <option>東北</option>
+                <option>関東</option>
+                <option>甲信越</option>
+                <option>東海</option>
+                <option>北陸</option>
+                <option>近畿</option>
+                <option>中国</option>
+                <option>四国</option>
+                <option>九州</option>
+                <option>沖縄</option>
+              </select>
+            </label>
+            <label>
+              <span>都道府県・市区町村</span>
+              <input name="eventArea" type="text" placeholder="例：神奈川・横須賀" required />
+            </label>
+            <label>
+              <span>会場名</span>
+              <input name="eventVenue" type="text" placeholder="例：BAHNC" />
+            </label>
+            <label>
+              <span>開催時間</span>
+              <input name="eventTime" type="text" placeholder="例：OPEN 22:00 / START 23:00" />
+            </label>
+            <label>
+              <span>出演者・サウンド</span>
+              <textarea name="eventLineup" rows="4" placeholder="出演者、サウンド、DJ、アーティストなど"></textarea>
+            </label>
+            <label>
+              <span>料金・チケット</span>
+              <input name="eventTicket" type="text" placeholder="例：ADV ¥3,000 / DOOR ¥4,000" />
+            </label>
+            <label>
+              <span>問い合わせ先 / SNS</span>
+              <input name="eventContact" type="text" placeholder="Instagram、メール、URLなど" />
+            </label>
+            <label class="event-request-wide">
+              <span>詳細・メッセージ</span>
+              <textarea name="eventDetails" rows="5" placeholder="イベント紹介文、注意事項、掲載したい内容など"></textarea>
+            </label>
+            <div class="event-request-actions">
+              <button class="button button-dark" type="submit">メールで送信する</button>
+              <a class="button button-outline-dark" id="event-dm-link" href="https://ig.me/m/kazuyachinen_goodvibeswalker" target="_blank" rel="noopener noreferrer">Instagram DMで送る ↗</a>
+            </div>
+            <p class="event-request-note" id="event-request-note">送信先：goodvibeswaalker@gmail.com / 掲載は本日以降のイベントのみ受付します。</p>
+          </form>
         </div>
       </section>
 
