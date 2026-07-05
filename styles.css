@@ -635,6 +635,77 @@ button { color: inherit; font: inherit; }
   color: #5f594f;
   font-size: 13px;
 }
+.event-request {
+  width: min(100%, 1500px);
+  margin: clamp(54px, 7vw, 96px) auto 0;
+  display: grid;
+  grid-template-columns: minmax(280px, .74fr) minmax(360px, 1.26fr);
+  gap: clamp(28px, 6vw, 80px);
+  padding: clamp(28px, 5vw, 54px);
+  border: 1px solid rgba(17,16,13,.16);
+  background:
+    radial-gradient(circle at 8% 10%, rgba(199,163,91,.16), transparent 32%),
+    #f8f2e5;
+}
+.event-request-copy h3 {
+  margin: 12px 0 20px;
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 74px);
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: -.06em;
+}
+.event-request-copy p:not(.eyebrow) {
+  margin: 0;
+  color: #5f594f;
+  font-size: 14px;
+}
+.event-request-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.event-request-form label {
+  display: grid;
+  gap: 8px;
+}
+.event-request-form span {
+  color: #7d5c22;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+.event-request-form input,
+.event-request-form select,
+.event-request-form textarea {
+  width: 100%;
+  border: 1px solid rgba(17,16,13,.18);
+  border-radius: 0;
+  background: rgba(255,255,255,.52);
+  color: #11100d;
+  font: inherit;
+  font-size: 14px;
+  padding: 13px 14px;
+}
+.event-request-form textarea {
+  resize: vertical;
+}
+.event-request-wide,
+.event-request-actions,
+.event-request-note {
+  grid-column: 1 / -1;
+}
+.event-request-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+.event-request-note {
+  margin: 0;
+  color: #6d665b;
+  font-size: 12px;
+}
 
 .contact { background: radial-gradient(circle at 50% 44%, rgba(199,163,91,.13), transparent 38%), #050505; text-align: center; }
 .contact-inner { width: min(100%, 1000px); margin: auto; }
@@ -740,6 +811,9 @@ button { color: inherit; font: inherit; }
   .event-guide-copy { position: static; }
   .event-actions { display: grid; grid-template-columns: 1fr; }
   .event-card dl div { grid-template-columns: 1fr; gap: 4px; }
+  .event-request { grid-template-columns: 1fr; }
+  .event-request-form { grid-template-columns: 1fr; }
+  .event-request-actions { display: grid; grid-template-columns: 1fr; }
   .contact h2 { font-size: clamp(48px, 15vw, 78px); }
   .social-link { gap: 12px; }
   .social-icon { width: 32px; font-size: 30px; }
