@@ -599,6 +599,22 @@ button { color: inherit; font: inherit; }
   color: #5f594f;
   font-size: 14px;
 }
+.event-card.is-source {
+  background:
+    linear-gradient(135deg, rgba(0,107,63,.07), transparent 34%),
+    linear-gradient(315deg, rgba(211,58,44,.06), transparent 32%),
+    #f8f2e5;
+}
+.event-card.is-source h3 {
+  font-size: clamp(25px, 3vw, 42px);
+  letter-spacing: -.04em;
+}
+.event-card.is-source a {
+  color: #8a6725;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 .event-empty {
   margin: 0;
   padding: 28px;
