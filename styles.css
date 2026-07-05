@@ -599,6 +599,14 @@ button { color: inherit; font: inherit; }
   color: #5f594f;
   font-size: 14px;
 }
+.event-empty {
+  margin: 0;
+  padding: 28px;
+  border: 1px dashed rgba(17,16,13,.28);
+  background: rgba(248,242,229,.62);
+  color: #5f594f;
+  font-size: 13px;
+}
 
 .contact { background: radial-gradient(circle at 50% 44%, rgba(199,163,91,.13), transparent 38%), #050505; text-align: center; }
 .contact-inner { width: min(100%, 1000px); margin: auto; }
