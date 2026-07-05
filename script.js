@@ -40,21 +40,42 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 const datedEventCards = document.querySelectorAll('.event-card[data-event-date]');
 const eventEmpty = document.querySelector('.event-empty');
+const regionButtons = document.querySelectorAll('.region-filter');
+
+function filterEvents(region = 'all') {
+  let visibleEventCount = 0;
+
+  datedEventCards.forEach((card) => {
+    const matchesRegion = region === 'all' || card.dataset.region === region;
+    const isPast = card.dataset.isPast === 'true';
+    const shouldShow = matchesRegion && !isPast;
+    card.hidden = !shouldShow;
+    if (shouldShow) visibleEventCount += 1;
+  });
+
+  if (eventEmpty) eventEmpty.hidden = visibleEventCount > 0;
+}
 
 if (datedEventCards.length) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  let visibleEventCount = 0;
   datedEventCards.forEach((card) => {
     const eventDate = new Date(`${card.dataset.eventDate}T00:00:00`);
     const isPast = Number.isFinite(eventDate.getTime()) && eventDate < today;
-    card.hidden = isPast;
-    if (!isPast) visibleEventCount += 1;
+    card.dataset.isPast = String(isPast);
   });
 
-  if (eventEmpty) eventEmpty.hidden = visibleEventCount > 0;
+  filterEvents('all');
 }
+
+regionButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const region = button.dataset.region || 'all';
+    regionButtons.forEach((item) => item.classList.toggle('is-active', item === button));
+    filterEvents(region);
+  });
+});
 
 const anthemAudio = document.getElementById('anthem-audio');
 const anthemToggle = document.querySelector('.anthem-toggle');
