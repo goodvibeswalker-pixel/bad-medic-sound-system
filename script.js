@@ -170,9 +170,36 @@ function setAnthemPlaying(playing) {
 }
 
 if (anthemAudio && anthemToggle && anthemProgress) {
+  const startAnthem = async () => {
+    if (!anthemAudio.paused) return true;
+    try {
+      await anthemAudio.play();
+      return true;
+    } catch {
+      setAnthemPlaying(false);
+      return false;
+    }
+  };
+
+  // 音声付き自動再生を試み、ブラウザに制限された場合は最初の操作で再生する。
+  startAnthem().then((started) => {
+    if (started) return;
+
+    const startOnFirstInteraction = async (event) => {
+      if (event.target.closest?.('.anthem-toggle, .anthem-mute, #anthem-progress')) return;
+      if (await startAnthem()) {
+        document.removeEventListener('click', startOnFirstInteraction);
+        document.removeEventListener('touchend', startOnFirstInteraction);
+      }
+    };
+
+    document.addEventListener('click', startOnFirstInteraction);
+    document.addEventListener('touchend', startOnFirstInteraction);
+  });
+
   anthemToggle.addEventListener('click', async () => {
     if (anthemAudio.paused) {
-      try { await anthemAudio.play(); } catch { setAnthemPlaying(false); }
+      await startAnthem();
     } else {
       anthemAudio.pause();
     }
