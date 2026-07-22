@@ -844,6 +844,9 @@ button { color: inherit; font: inherit; }
 
 @media (max-width: 900px) {
   html { scroll-padding-top: 70px; }
+  html, body { width: 100%; min-height: 100%; overflow-x: hidden; }
+  main, main > section { width: 100%; max-width: 100%; }
+  .reveal { opacity: 1; transform: none; }
   .site-header, .site-header.scrolled { height: 70px; grid-template-columns: 1fr auto; padding-inline: 18px; }
   .brand img, .site-header.scrolled .brand img { width: 108px; height: 50px; }
   .menu-button { display: block; position: relative; z-index: 3; }
@@ -853,6 +856,7 @@ button { color: inherit; font: inherit; }
   .site-nav { position: fixed; inset: 0; z-index: 2; padding: 104px 24px 34px; display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 0; background: rgba(5,5,5,.985); opacity: 0; visibility: hidden; transform: translateY(-15px); transition: opacity .3s, visibility .3s, transform .3s; }
   .site-nav::before { content: "MENU"; margin: 0 10px 20px; color: var(--gold); font-family: var(--serif); font-size: 12px; font-style: italic; letter-spacing: .16em; }
   .site-nav.open { opacity: 1; visibility: visible; transform: none; }
+  .site-nav:not(.open) { pointer-events: none; }
   .site-nav a { padding: 13px 10px; border-bottom: 1px solid var(--line); color: var(--paper); font-family: var(--serif); font-size: 23px; font-weight: 400; letter-spacing: -.01em; }
   .site-nav a::after { display: none; }
   .hero { padding: 88px 14px 18px; }
